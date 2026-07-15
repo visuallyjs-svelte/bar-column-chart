@@ -1,9 +1,11 @@
 <script>
     import { BarChartComponent, ColumnChartComponent } from "@visuallyjs/browser-ui-svelte";
-    import { charts } from "./examples";
+    import { charts } from "./examples"
+
 </script>
 
 <div class="vjs-bar-column-chart">
+
     {#each charts as chart}
         <div class="vjs-chart-example">
             <div class="vjs-chart-example-title">{chart.desc}</div>
@@ -11,9 +13,9 @@
                 <div class="vjs-chart-example-comments">{chart.comments}</div>
             {/if}
             {#if chart.type === 'bar'}
-                <BarChartComponent className="vjs-chart-example-container" options={chart.options} />
+                <BarChartComponent className="vjs-chart-example-container" options={chart.options.config} url={chart.options.url} data={chart.options.data}/>
             {:else if chart.type === 'column'}
-                <ColumnChartComponent className="vjs-chart-example-container" options={chart.options} />
+                <ColumnChartComponent className="vjs-chart-example-container" options={chart.options.config}  url={chart.options.url} data={chart.options.data}/>
             {/if}
         </div>
     {/each}
